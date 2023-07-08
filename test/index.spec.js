@@ -15,9 +15,9 @@ import {
     logger,
     connect,
     mobiletto,
-    closeRedis,
     registerDriver,
     flushAll,
+    shutdownMobiletto,
 } from "mobiletto-base";
 
 import { storageClient as idbDriver } from "../lib/esm/index.js";
@@ -603,5 +603,5 @@ for (const redisSetup of redisTests()) {
 
 after((done) => {
     logger.info("all tests finished, tearing down redis...");
-    closeRedis().finally(done);
+    shutdownMobiletto().finally(done);
 });
