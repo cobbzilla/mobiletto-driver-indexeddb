@@ -1,6 +1,6 @@
 {
   "name": "mobiletto-driver-indexeddb",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "type": "module",
   "description": "The IndexedDB driver for mobiletto. This package is intended to be used with mobiletto-base, which does not include any drivers",
   "keywords": [
@@ -24,7 +24,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "test": "mocha --timeout 60000 --exit ./test/*.spec.js",
+    "test": "mocha --timeout 10000 ./test/*.spec.js",
     "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "lint": "npx eslint src test",
     "lint:fix": "npm run lint -- --fix",
