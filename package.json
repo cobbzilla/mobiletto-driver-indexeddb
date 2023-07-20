@@ -1,6 +1,6 @@
 {
   "name": "mobiletto-driver-indexeddb",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "type": "module",
   "description": "The IndexedDB driver for mobiletto. This package is intended to be used with mobiletto-base, which does not include any drivers",
   "keywords": [
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cobbzilla/mobiletto-driver-indexeddb"
+    "url": "https://github.com/cobbzilla/mobiletto-driver-indexeddb.git"
   },
   "license": "Apache-2.0",
   "scripts": {
