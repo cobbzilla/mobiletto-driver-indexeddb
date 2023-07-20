@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cobbzilla/mobiletto-driver-indexeddb"
+    "url": "https://github.com/cobbzilla/mobiletto-driver-indexeddb.git"
   },
   "license": "Apache-2.0"
 }
