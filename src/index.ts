@@ -58,8 +58,11 @@ export class StorageClient {
                 this.rootStore = db.createObjectStore(ROOT_STORE, {});
             };
             openOrCreateDB.onsuccess = () => {
-                if (db) resolve(db);
-                reject("indexedDB.open failed: db was not initialized");
+                if (db) {
+                    resolve(db);
+                } else {
+                    reject("indexedDB.open failed: db was not initialized");
+                }
             };
         });
     }
