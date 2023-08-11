@@ -1,10 +1,15 @@
 /// <reference types="node" />
 import { Buffer } from "buffer";
-import { MobilettoListOptions, MobilettoMetadata, MobilettoMinimalClient, MobilettoOptions, MobilettoRemoveOptions, MobilettoVisitor, MobilettoWriteSource, MobilettoDriverInfo } from "mobiletto-base";
-export declare const IdbInfo: MobilettoDriverInfo;
+import { MobilettoListOptions, MobilettoMetadata, MobilettoMinimalClient, MobilettoOptions, MobilettoRemoveOptions, MobilettoVisitor, MobilettoWriteSource, MobilettoDriverInfo, MobilettoDriverScope } from "mobiletto-base";
+export type IdbInfoType = {
+    driver: string;
+    scope: MobilettoDriverScope;
+};
+export declare const IdbInfo: IdbInfoType;
 export declare class StorageClient {
     indexedDB: IDBFactory;
-    dbPromise: Promise<IDBDatabase>;
+    readonly dbName: string;
+    readonly dbPromise: Promise<IDBDatabase>;
     db: IDBDatabase | null;
     rootStore: IDBObjectStore | null;
     constructor(dbName: string, opts: {

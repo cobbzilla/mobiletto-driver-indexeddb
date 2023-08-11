@@ -16,6 +16,7 @@ import {
     MobilettoVisitor,
     MobilettoWriteSource,
     MobilettoDriverInfo,
+    MobilettoDriverScope,
 } from "mobiletto-base";
 
 const IDB_SCHEMA_VERSION = 1;
@@ -26,20 +27,26 @@ type IdbMetadata = MobilettoMetadata & {
     bytes?: Buffer;
 };
 
-export const IdbInfo: MobilettoDriverInfo = {
+export type IdbInfoType = {
+    driver: string;
+    scope: MobilettoDriverScope;
+};
+export const IdbInfo: IdbInfoType = {
     driver: "indexeddb",
     scope: "local",
 };
 
 export class StorageClient {
     indexedDB: IDBFactory;
-    dbPromise: Promise<IDBDatabase>;
+    readonly dbName: string;
+    readonly dbPromise: Promise<IDBDatabase>;
     db: IDBDatabase | null = null;
     rootStore: IDBObjectStore | null = null;
     constructor(dbName: string, opts: { indexedDB: IDBFactory }) {
         if (!dbName) {
             throw new MobilettoError("indexeddb.StorageClient: key (dbName) is required");
         }
+        this.dbName = dbName;
         if (opts && opts.indexedDB) {
             this.indexedDB = opts.indexedDB;
         } else {
@@ -75,7 +82,10 @@ export class StorageClient {
 
     testConfig = async () => await this.list();
 
-    info = () => IdbInfo;
+    info = (): MobilettoDriverInfo => ({
+        canonicalName: () => `indexeddb:${this.dbName}`,
+        ...IdbInfo,
+    });
 
     mdb = async (): Promise<IDBDatabase> => {
         if (this.db) return this.db;
