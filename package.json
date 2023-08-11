@@ -1,6 +1,6 @@
 {
   "name": "mobiletto-driver-indexeddb",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "type": "module",
   "description": "The IndexedDB driver for mobiletto. This package is intended to be used with mobiletto-base, which does not include any drivers",
   "keywords": [
@@ -46,8 +46,8 @@
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "fake-indexeddb": "^4.0.1",
-    "mobiletto-base": "^2.0.33",
-    "mobiletto-driver-local": "^2.0.10",
+    "mobiletto-base": "^2.0.34",
+    "mobiletto-driver-local": "^2.0.11",
     "mocha": "^10.2.0",
     "prettier": "^2.8.8",
     "tslint-config-prettier": "^1.18.0",
