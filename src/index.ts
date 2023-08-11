@@ -15,6 +15,7 @@ import {
     MobilettoRemoveOptions,
     MobilettoVisitor,
     MobilettoWriteSource,
+    MobilettoDriverInfo,
 } from "mobiletto-base";
 
 const IDB_SCHEMA_VERSION = 1;
@@ -23,6 +24,11 @@ const ROOT_STORE = "rootStore";
 
 type IdbMetadata = MobilettoMetadata & {
     bytes?: Buffer;
+};
+
+export const IdbInfo: MobilettoDriverInfo = {
+    driver: "indexeddb",
+    scope: "local",
 };
 
 export class StorageClient {
@@ -68,6 +74,8 @@ export class StorageClient {
     }
 
     testConfig = async () => await this.list();
+
+    info = () => IdbInfo;
 
     mdb = async (): Promise<IDBDatabase> => {
         if (this.db) return this.db;

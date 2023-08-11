@@ -1,6 +1,7 @@
 /// <reference types="node" />
 import { Buffer } from "buffer";
-import { MobilettoListOptions, MobilettoMetadata, MobilettoMinimalClient, MobilettoOptions, MobilettoRemoveOptions, MobilettoVisitor, MobilettoWriteSource } from "mobiletto-base";
+import { MobilettoListOptions, MobilettoMetadata, MobilettoMinimalClient, MobilettoOptions, MobilettoRemoveOptions, MobilettoVisitor, MobilettoWriteSource, MobilettoDriverInfo } from "mobiletto-base";
+export declare const IdbInfo: MobilettoDriverInfo;
 export declare class StorageClient {
     indexedDB: IDBFactory;
     dbPromise: Promise<IDBDatabase>;
@@ -10,6 +11,7 @@ export declare class StorageClient {
         indexedDB: IDBFactory;
     });
     testConfig: () => Promise<MobilettoMetadata[]>;
+    info: () => MobilettoDriverInfo;
     mdb: () => Promise<IDBDatabase>;
     list(pth?: string, optsOrRecursive?: MobilettoListOptions | boolean, visitor?: MobilettoVisitor): Promise<MobilettoMetadata[]>;
     _list(pth?: string, recursive?: boolean, visitor?: MobilettoVisitor): Promise<MobilettoMetadata[]>;
